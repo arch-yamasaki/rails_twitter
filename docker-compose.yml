@@ -5,8 +5,8 @@ services:
     build:
       context: .
       dockerfile: localDockerfile
-     # tmp/pids/server.pidが残ってたら `A server is already running. ~~` のエラーでrailsを起動できないので事前に消してから、`rails sever` する
-    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s"
+    # tmp/pids/server.pidが残ってたら `A server is already running. ~~` のエラーでrailsを起動できないので事前に消してから、`rails sever` する
+    # command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s"
     # 上記のdbイメージで指定したユーザー名とパスワードをrails側でも指定するため環境変数に設定。
     env_file:
       - .env

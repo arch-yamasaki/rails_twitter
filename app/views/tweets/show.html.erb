@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @tweet %>
+
+<div>
+  <%= link_to "Edit this tweet", edit_user_tweet_path(params[:user_id], @tweet) %> |
+  <%= link_to "Back to tweets", user_tweets_path %>
+
+  <%= button_to "Destroy this tweet", user_tweet_path(params[:user_id], @tweet), method: :delete %>
+</div>
