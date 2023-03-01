@@ -54,6 +54,9 @@ Rails.application.configure do
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 
+  # For using BetterErrorsGem on Docker
+  BetterErrors::Middleware.allow_ip! "0.0.0.0/0"
+
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
 
