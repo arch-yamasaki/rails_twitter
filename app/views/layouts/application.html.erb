@@ -10,7 +10,14 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="container-fraud">
+    <div class="row">
+      <div class="col ps-0 h-100 sticky-top" style="width:100px height:500px">
+        <%= render 'sidebar' %>
+      </div>
+      <div class="col my-4">
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>
