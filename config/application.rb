@@ -32,9 +32,12 @@ module App
     # config.eager_load_paths << Rails.root.join("extras")
 
     config.generators do |g|
-      g.test_framework   :rspec, fixture: false
-      g.view_specs       false
-      g.controller_specs false
+      g.test_framework    :rspec, fixture: false
+      g.view_specs        false   # view specは作らない
+      g.controller_specs  false   # controller specは作らない
+      g.request_specs     false   # request specは作らない
+      g.helper_specs      false   # helper specは作らない
+      g.routing_specs     false   # routing specは作らない
     end
   end
 end
