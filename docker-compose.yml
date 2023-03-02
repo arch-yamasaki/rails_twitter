@@ -25,6 +25,13 @@ services:
       - .env
     volumes: # ローカルdbを永続化させるために必要
       - postgres_volume:/var/lib/postgresql/data
+  chrome:    #Chromeでのテスト実行用コンテナ
+    image: selenium/standalone-chrome    #Chromeがインストールされたイメージ
+    ports:
+      - '4444:4444'
+    volumes: # docker composeでRailsとChromiumでダウンロード先のディレクトリをVolumeとして共有
+      - ./tmp/downloads:/usr/src/app/tmp/downloads
+
 
 volumes:
   postgres_volume:
