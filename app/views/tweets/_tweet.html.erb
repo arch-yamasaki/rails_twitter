@@ -3,5 +3,10 @@
     <strong>Text:</strong>
     <%= tweet.text %>
   </p>
+  <% if @user.like?(tweet) %>
+    <%= button_to "Like(Already) : #{tweet.like_count}", {controller: 'likes', action: "create"}, {method: :delete , params:{ tweet_id: tweet.id, user_id: @user.id}}%>
+  <% else %>
+    <%= button_to "Like(NotYet) : #{tweet.like_count}", {controller: 'likes', action: "delete"}, {method: :create , params:{ tweet_id: tweet.id, user_id: @user.id}} %>
+  <% end %>
 
 </div>

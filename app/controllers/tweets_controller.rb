@@ -55,7 +55,7 @@ class TweetsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_tweet
-      @tweet = Tweet.find(params[:id])
+      @tweet = Tweet.find(paraams[:id])
     end
 
     # Only allow a list of trusted parameters through.
