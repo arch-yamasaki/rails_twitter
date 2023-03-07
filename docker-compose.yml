@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  web:
+  web: &web
     build:
       context: .
       dockerfile: localDockerfile
@@ -13,6 +13,7 @@ services:
     # ホストのカレントディレクトリ(.)とイメージ内の/myappディレクトリを同期させている
     volumes:
       - .:/app
+      # - bundle_volume:/usr/local/bundle
     ports:
       - 3000:3000
     tty: true # 疑似ターミナル (pseudo-TTY) を割り当て。https://docs.docker.jp/compose/compose-file/index.html#tty
@@ -32,6 +33,13 @@ services:
     volumes: # docker composeでRailsとChromiumでダウンロード先のディレクトリをVolumeとして共有
       - ./tmp/downloads:/usr/src/app/tmp/downloads
 
+  solargraph:
+    <<: *web # webと同じ設定を引き継ぐ。
+    command: bundle exec solargraph socket --host=0.0.0.0 --port=7658
+    ports:
+      - "8091:7658"
+
 
 volumes:
   postgres_volume:
+  bundle_volume:
