@@ -49,6 +49,7 @@ gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
 
 gem "kaminari"
+gem "ransack"
 
 
 group :development, :test do
@@ -67,6 +68,7 @@ group :development do
   gem "better_errors"
   gem "rubocop"
   gem "factory_bot_rails"
+  gem "solargraph"
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
