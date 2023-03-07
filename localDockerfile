@@ -17,6 +17,7 @@ ENV HOMEDIR "/app"
 RUN mkdir ${HOMEDIR}
 WORKDIR ${HOMEDIR}
 ADD Gemfile ${HOMEDIR}/Gemfile
+ADD Gemfile.lock ${HOMEDIR}/Gemfile.lock
 RUN bundle install
 
 EXPOSE 3000
