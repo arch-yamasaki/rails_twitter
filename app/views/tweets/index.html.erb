@@ -1,6 +1,9 @@
 <p style="color: green"><%= notice %></p>
 
 <h1>Tweets</h1>
+<div>
+  <%= paginate @tweets %>
+</div>
 
 <div id="tweets">
   <% @tweets.each do |tweet| %>

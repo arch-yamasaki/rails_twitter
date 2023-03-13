@@ -3,7 +3,7 @@ class TweetsController < ApplicationController
 
   # GET /tweets
   def index
-    @tweets = Tweet.all
+    @tweets = Tweet.page(params[:page])
     @user = User.find(params[:user_id])
   end
 
