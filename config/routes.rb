@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :users do
-    resources :tweets
-  end
+  resources :users, only: [:index, :show]
+  resources :tweets, only: [:index, :new, :create, :destroy]
+  # resources :tweets, only: [:index, :new, :create, :destroy]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   post 'likes', to: 'likes#create'
