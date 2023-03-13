@@ -3,9 +3,8 @@ class TweetsController < ApplicationController
 
   # GET /tweets
   def index
+    @user = current_user
     @tweets = Tweet.page(params[:page])
-    @user = User.find(params[:user_id])
-    session[:current_query] = request.query_parameters # 現在のページにもどれるようにクエリパラメータを保管する
   end
 
   # GET /tweets/1
@@ -32,7 +31,7 @@ class TweetsController < ApplicationController
     # binding.pry
     if @tweet.save
       # redirect_to @tweet, notice: "Tweet was successfully created."
-      redirect_to user_tweet_path(@user, @tweet), notice: "Tweet was successfully updated."
+      redirect_to tweet_path(@user, @tweet), notice: "Tweet was successfully updated."
     else
       render :new, status: :unprocessable_entity
     end
@@ -41,7 +40,7 @@ class TweetsController < ApplicationController
   # PATCH/PUT /tweets/1
   def update
     if @tweet.update(tweet_params)
-      redirect_to user_tweet_path(params[:user_id], @tweet), notice: "Tweet was successfully updated."
+      redirect_to tweet_path(params[:user_id], @tweet), notice: "Tweet was successfully updated."
     else
       render :edit, status: :unprocessable_entity
     end
@@ -50,7 +49,7 @@ class TweetsController < ApplicationController
   # DELETE /tweets/1
   def destroy
     @tweet.destroy
-    redirect_to user_tweets_path(params[:user_id]), notice: "Tweet was successfully destroyed."
+    redirect_to tweets_path(params[:user_id]), notice: "Tweet was successfully destroyed."
   end
 
   private
