@@ -9,7 +9,7 @@ class LikesController < ApplicationController
   def delete
     like = Like.where(like_params)
     if like.destroy_all
-      redirect_to user_tweets_path(params[:user_id])
+      redirect_to user_tweets_path(params[:user_id], session[:current_query])
     end
   end
 

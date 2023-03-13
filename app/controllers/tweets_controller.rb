@@ -5,6 +5,7 @@ class TweetsController < ApplicationController
   def index
     @tweets = Tweet.page(params[:page])
     @user = User.find(params[:user_id])
+    session[:current_query] = request.query_parameters # 現在のページにもどれるようにクエリパラメータを保管する
   end
 
   # GET /tweets/1
