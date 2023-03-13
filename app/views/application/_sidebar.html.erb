@@ -1,20 +1,15 @@
-<div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px;">
+<div class="w-100 d-flex flex-column flex-shrink-0 p-3 text-bg-dark">
   <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
     <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
-    <span class="fs-4">サイドバー</span>
+    <span class="fs-4">Twitter Clone</span>
   </a>
   <hr>
   <ul class="nav nav-pills flex-column mb-auto">
     <li class="nav-item">
       <a href="#" class="nav-link active" aria-current="page">
-        <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"/></svg>
+        <%# <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"/></svg> %>
+        <i class="bi bi-house me-2"></i>
         ホーム
-      </a>
-    </li>
-    <li>
-      <a href="#" class="nav-link text-white">
-        <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
-        ダッシュボード
       </a>
     </li>
     <li>
@@ -37,17 +32,25 @@
     </li>
   </ul>
   <hr>
-  <div class="dropdown">
-    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-      <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-      <strong>mdo</strong>
-    </a>
-    <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-      <li><a class="dropdown-item" href="#">新プロジェクト...</a></li>
-      <li><a class="dropdown-item" href="#">設定</a></li>
-      <li><a class="dropdown-item" href="#">プロフィール</a></li>
-      <li><hr class="dropdown-divider"></li>
-      <li><a class="dropdown-item" href="#">サインアウト</a></li>
-    </ul>
+  <div class="dropdown mx-5">
+    <% if user_signed_in? %>
+      <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+        <%# <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2"> %>
+        <strong> <%= current_user.email %> </strong>        
+      </a>
+      <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+        <li><a class="dropdown-item" href="#">プロフィール</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li> <%= button_to 'サインアウトボタン', destroy_user_session_path, class: 'dropdown-item' , method: :delete %></li>
+      </ul>
+    <% else %>
+      <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+        <strong> 情報なし </strong>
+      </a>
+      <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+        <li><%= link_to 'サインイン', user_session_path , class: 'dropdown-item' %></li>
+        <li><%= link_to 'サインアップ', new_user_registration_path , class: 'dropdown-item' %></li>
+      </ul>
+   <% end %>
   </div>
 </div>

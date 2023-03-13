@@ -1,12 +1,21 @@
-<div id="<%= dom_id tweet %>">
-  <p>
-    <strong>Text:</strong>
+<div id="<%= dom_id tweet %>" class="card bg-dark text-light">
+  <div class="card-header h-10">
+    <p> user name </p>
+  </div>
+  <div class="card-body">
     <%= tweet.text %>
-  </p>
-  <% if @user.like?(tweet) %>
-    <%= button_to "Like(Already) : #{tweet.like_count}", {controller: 'likes', action: "create"}, {method: :delete , params:{ tweet_id: tweet.id, user_id: @user.id}}%>
-  <% else %>
-    <%= button_to "Like(NotYet) : #{tweet.like_count}", {controller: 'likes', action: "delete"}, {method: :create , params:{ tweet_id: tweet.id, user_id: @user.id}} %>
-  <% end %>
-
+  </div>
+  <div class="card-footer flex-direction:row">
+    <div>
+      <% if @user.like?(tweet) %>
+        <%= button_to "Like(Already) : #{tweet.like_count}", {controller: 'likes', action: "create"}, {method: :delete , params:{ tweet_id: tweet.id, user_id: @user.id}}%>
+      <% else %>
+          <%= button_to "Like(NotYet) : #{tweet.like_count}", {controller: 'likes', action: "delete"}, {method: :create , params:{ tweet_id: tweet.id, user_id: @user.id}} %>
+      <% end %>
+    </div>
+    <div>
+      <%= link_to "Show this tweet", user_tweet_path(@user, tweet) %>
+    </div>
+  </div>
+  <span class="border border-light"></span>
 </div>
