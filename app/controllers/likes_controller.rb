@@ -2,14 +2,14 @@ class LikesController < ApplicationController
   def create
     like = Like.new(like_params)
     if like.save
-      redirect_to user_tweets_path(params[:user_id])
+      redirect_to session[:referer_path]
     end
   end
 
   def delete
     like = Like.where(like_params)
     if like.destroy_all
-      redirect_to user_tweets_path(params[:user_id], session[:current_query])
+      redirect_to session[:referer_path]
     end
   end
 
