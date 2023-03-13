@@ -1,8 +1,12 @@
 <p style="color: green"><%= notice %></p>
 
 <h1>Tweets</h1>
-<div>
-  <%= paginate @tweets %>
+<div class="row justify-content-center">
+  <%= paginate @tweets,
+    theme: "bootstrap-5",
+    pagination_class: "pagination-sm flex-wrap justify-content-center bg-dark",
+    nav_class: "bg-dark"
+  %>
 </div>
 
 <div id="tweets">

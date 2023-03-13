@@ -50,6 +50,7 @@ gem "bootsnap", require: false
 
 gem "devise"
 gem "kaminari"
+gem "bootstrap5-kaminari-views"
 gem "ransack"
 
 
