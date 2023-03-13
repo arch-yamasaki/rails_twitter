@@ -16,8 +16,8 @@ last_day = Date.new(1960, 1, 1)
 
 (1..USER_NUM).each do |idx|
   random_birthday =  rand(start_day..last_day)
-  user_params = {name: "user#{idx}", birthday: random_birthday}
-  User.create(user_params)
+  user_params = {name: "user#{idx}", birthday: random_birthday, email: "user#{idx}@example.com", password: "password#{idx}"}
+  User.create!(user_params)
 end
 
 (1..TWEET_NUM).each do |idx|

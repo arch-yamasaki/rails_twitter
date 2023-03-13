@@ -8,5 +8,5 @@ Rails.application.routes.draw do
   post 'likes', to: 'likes#create'
   delete 'likes', to: 'likes#delete'
   # Defines the root path route ("/")
-  # root "articles#index"
+  root "users#index"
 end
