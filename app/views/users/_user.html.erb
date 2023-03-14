@@ -1,12 +1,33 @@
-<div id="<%= dom_id user %>">
-  <p>
-    <strong>Name:</strong>
-    <%= user.name %>
-  </p>
+<div id="<%= dom_id user %>" class="row p-2 z-1" style>
+  <div class="col-3 text-center">
+    <%# <%= image_tag "logo.png", alt: 'src' %>
+    画像
+  </div>
 
-  <p>
-    <strong>Birthday:</strong>
+  <div class="col-6 position-relative">
+    <%= user.name %>
     <%= user.birthday %>
-  </p>
+    <%= link_to "", user_path(user), class: 'stretched-link' %>
+  </div>
+  
+  <div class="col-3 text-center">
+    <% if current_user.follow?(user) %>
+        <%= button_to "UnFollow",
+          {controller: 'follows', action: "delete"},
+          {
+            method: :delete , params:{following_id: current_user.id, followed_id: user.id},
+            class: "btn btn-outline-danger w-100"
+          }
+        %>
+      <% else %>
+        <%= button_to "Follow",
+          {controller: 'follows', action: "create"},
+          {
+            method: :post , params:{following_id: current_user.id, followed_id: user.id},
+            class: "btn btn-outline-primary w-100"
+          }
+        %>
+      <% end %>
+  </div>
 
 </div>

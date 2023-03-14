@@ -22,4 +22,8 @@ class User < ApplicationRecord
     like_tweet_ids().include?(tweet.id)
   end
 
+  def follow?(user)
+    following_ids.include?(user.id)
+  end
+
 end
