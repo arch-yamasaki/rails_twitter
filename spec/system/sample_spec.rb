@@ -4,10 +4,7 @@ RSpec.describe Tweet, type: :system do
   describe "Tweetモデル" do
     context "一般ユーザの場合" do
       before do
-        @user = User.create!(
-          name: "sample_name",
-          birthday: Date.new(1980, 1, 1),
-        )
+        @user = FactoryBot.create(:user1)
       end
       it "" do
         visit new_tweet_path(@user.id)
