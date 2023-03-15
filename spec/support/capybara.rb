@@ -23,13 +23,14 @@ Capybara.register_driver :remote_chrome do |app|
 end
 
 RSpec.configure do |config|
+
+  # JS使わない場合のテストはrach_testで。
   config.before(:each, type: :system) do
     driven_by :rack_test
   end
 
+  # JS使わ場合のテストはhead
   config.before(:each, type: :system, js: true) do
-    #driven_by :selenium_chrome_headless
-
     Capybara.server_host = IPSocket.getaddress(Socket.gethostname)
     Capybara.server_port = 4444
     Capybara.app_host = "http://#{Capybara.server_host}:#{Capybara.server_port}"
