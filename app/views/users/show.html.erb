@@ -1,10 +1,33 @@
-<p style="color: green"><%= notice %></p>
 
-<%= render @user %>
+<%= turbo_frame_tag "user" do %>
+  <p style="color: green"><%= notice %></p>
+  <div class="container-fluid bg-dark text-white">
+    <h1>User Profile</h1>
+    <div class="border-bottom border-secondary"></div>
 
-<div>
-  <%= link_to "Edit this user", edit_user_path(@user) %> |
-  <%= link_to "Back to users", users_path %>
-
-  <%= button_to "Destroy this user", @user, method: :delete %>
-</div>
+    <ul class="list-group h5">
+      <li class="my-1 list-group-item d-flex bg-dark text-white justify-content-between">
+        <span class="py-2"> ID : </span>
+        <span> <%= @user.id %> </span>
+      </li>
+      <li class="my-1 list-group-item d-flex bg-dark text-white justify-content-between">
+        <span class="py-2"> Name : </span>
+        <span> <%= @user.name %> </span>
+      </li>
+      <li class="my-1 list-group-item d-flex bg-dark text-white justify-content-between">
+        <span class="py-2"> Birthday : </span>
+        <span> <%= @user.birthday %> </span>
+      </li>
+      <li class="my-1 list-group-item d-flex bg-dark text-white justify-content-between">
+        <span class="py-2"> Joined Date : </span>
+        <span> <%= @user.created_at %> </span>
+      </li>
+    </ul>
+  </div>
+  <% if @current_user == @user %>
+    <div>
+      <%= link_to 'edit', edit_user_path(@current_user), class: 'btn btn-primary w-100 my-2'%>
+      <%# <%= button_to "Destroy this user", @user, method: :delete %>
+    </div>
+  <% end %>
+<% end %>

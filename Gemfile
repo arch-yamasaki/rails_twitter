@@ -50,8 +50,9 @@ gem "bootsnap", require: false
 
 gem "devise"
 gem "kaminari"
-gem "bootstrap5-kaminari-views"
 gem "ransack"
+gem "bootstrap5-kaminari-views"
+gem "bootstrap_form"
 
 
 group :development, :test do

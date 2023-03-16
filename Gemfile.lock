@@ -84,6 +84,9 @@ GEM
     bootstrap5-kaminari-views (0.0.1)
       kaminari (>= 0.13)
       rails (>= 3.1)
+    bootstrap_form (5.1.0)
+      actionpack (>= 5.2)
+      activemodel (>= 5.2)
     builder (3.2.4)
     bullet (7.0.7)
       activesupport (>= 3.0.0)
@@ -334,6 +337,7 @@ DEPENDENCIES
   binding_of_caller
   bootsnap
   bootstrap5-kaminari-views
+  bootstrap_form
   bullet
   capybara
   cssbundling-rails

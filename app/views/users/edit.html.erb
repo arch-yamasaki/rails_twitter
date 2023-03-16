@@ -1,10 +1,49 @@
-<h1>Editing user</h1>
 
-<%= render "form", user: @user %>
+<%= turbo_frame_tag "user" do %>
+  <p style="color: green"><%= notice %></p>
+  <%= bootstrap_form_with(model: @user) do |form| %>
+    <div class="container-fluid bg-dark text-white">
+      <h1>User Profile</h1>
+      <div class="border-bottom border-secondary"></div>
 
-<br>
-
-<div>
-  <%= link_to "Show this user", @user %> |
-  <%= link_to "Back to users", users_path %>
-</div>
+      <ul class="list-group h5">
+        <li class="my-1 list-group-item d-flex bg-dark text-white justify-content-between">
+          <span class="my-2"> ID : </span>
+          <span> <%= @user.id %> </span>
+        </li>
+        <li class="my-1 list-group-item d-flex bg-dark text-white justify-content-between">
+          <span class="my-2"> Name : </span>
+          <span>
+            <%= form.text_field :name,
+                  skip_label: true,
+                  label_as_placeholder: true,
+                  wrapper: false,
+                  control_class: "form-control form-control-sm"
+            %>
+          </span>
+        </li>
+        <li class="my-1 list-group-item d-flex bg-dark text-white justify-content-between">
+          <span class="my-2"> Birthday : </span>
+          <span>
+            <%= form.date_field :birthday,
+                  skip_label: true,
+                  label_as_placeholder: true,
+                  wrapper: false,
+                  control_class: "form-control form-control-sm"
+            %>
+          </span>
+        </li>
+        <li class="my-1 list-group-item d-flex bg-dark text-white justify-content-between">
+          <span class="my-2"> Joined Date : </span>
+          <span>
+            <%= @user.created_at %>
+          </span>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <%= form.submit class: 'btn btn-primary w-100 my-2'%>
+      <%# <%= button_to "Destroy this user", @user, method: :delete %>
+    </div>
+  <% end %>
+<% end %>

@@ -1,0 +1,21 @@
+
+
+<div class="container-fluid bg-dark text-white min-vh-100">
+  <h1>User Profile</h1>
+  <div class="border-bottom border-secondary"></div>
+
+  <ul class="list-group h5">
+    <li class="my-2 list-group-item d-flex bg-dark text-white justify-content-between">
+      <span> Name : </span>
+      <span> <%= @current_user.name %> </span>
+    </li>
+    <li class="my-2 list-group-item d-flex bg-dark text-white justify-content-between">
+      <span> Birthday : </span>
+      <span> <%= @current_user.birthday %> </span>
+    </li>
+    <li class="my-2 list-group-item d-flex bg-dark text-white justify-content-between">
+      <span> Joined Date : </span>
+      <span> <%= @current_user.created_at %> </span>
+    </li>
+  </ul>
+</div>

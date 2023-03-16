@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :users, only: [:index, :show, :edit]
+  resources :users, only: [:index, :show, :edit, :update]
   resources :tweets, only: [:index, :new, :create, :destroy]
   # resources :tweets, only: [:index, :new, :create, :destroy]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
