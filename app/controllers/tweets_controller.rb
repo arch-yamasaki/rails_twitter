@@ -56,8 +56,8 @@ class TweetsController < ApplicationController
     end
 
     def set_tweets
-      @tweets = Tweet.page(params[:page])
-      # @tweets = Tweet.order("created_at DESC").page(params[:page])
+      # @tweets = Tweet.page(params[:page])
+      @tweets = Tweet.order("created_at DESC").page(params[:page])
     end
 
     # Only allow a list of trusted parameters through.
