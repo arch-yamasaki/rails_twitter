@@ -1,0 +1,22 @@
+<%= bootstrap_form_with model: Tweet.new do |form| %>
+  <div class="row">
+    <div class="col-1"> 
+    <%# 画像関連 %>
+      画像
+    </div>
+    <div class="col-11">
+      <div>
+        <%= form.text_area :text,
+          skip_label: true,
+          label_as_placeholder: true,
+          wrapper: false,
+          control_class: "form-control form-control-lg"
+        %>
+      </div>
+      <div class="my-2 text-end">
+        <%= form.submit "Tweet", class: 'btn btn-primary btn-sm w-25'%>
+      </div>
+    </div>
+  </div>
+<% end %>
+<br>
