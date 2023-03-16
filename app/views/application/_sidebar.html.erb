@@ -22,7 +22,9 @@
         <%= current_user.name %>
       </a>
       <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-        <li><a class="dropdown-item" href="#">プロフィール</a></li>
+        <li>
+          <%= link_to 'プロフィール', user_path(id: current_user), class: 'dropdown-item' %>
+        </li>
         <li><hr class="dropdown-divider"></li>
         <li> <%= button_to 'サインアウトボタン', destroy_user_session_path, class: 'dropdown-item' , method: :delete %></li>
       </ul>
