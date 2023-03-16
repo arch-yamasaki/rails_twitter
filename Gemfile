@@ -60,12 +60,12 @@ group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem "rspec-rails" # 追加
   gem "factory_bot_rails" # 追加
+  gem "pry-byebug"
 end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
-  gem "pry-byebug"
   gem "bullet"
   gem "binding_of_caller"
   gem "better_errors"
