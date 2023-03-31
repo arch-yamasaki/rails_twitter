@@ -18,8 +18,6 @@ RSpec.describe UserPolicy, type: :policy do
   end
   
   permissions :update? do
-    # it "grants access if user is current_user" dos
-    #   expect(subject).to permit(user, user)
     it "grants access if user is current_user" do
       expect(subject).to permit(user, user)
     end
