@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_current_user, only: %i[show edit update]
+  before_action :set_user, only: %i[show edit update delete]
 
   # GET /users
   def index
@@ -32,6 +33,7 @@ class UsersController < ApplicationController
 
   # PATCH/PUT /users/1
   def update
+    authorize @user
     if @current_user.update(user_params)
       redirect_to user_path(@current_user), notice: "User was successfully updated."
     else
@@ -41,19 +43,24 @@ class UsersController < ApplicationController
 
   # DELETE /users/1
   def destroy
+    
+    authorize @user
     @user.destroy
     redirect_to users_url, notice: "User was successfully destroyed."
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_current_user
-      @current_user = current_user
-      @user = User.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_current_user
+    @current_user = current_user
+  end
 
-    # Only allow a list of trusted parameters through.
-    def user_params
-      params.require(:user).permit(:name, :birthday)
-    end
+  def set_user
+    @user = User.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def user_params
+    params.require(:user).permit(:name, :birthday)
+  end
 end

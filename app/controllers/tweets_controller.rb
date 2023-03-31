@@ -26,7 +26,8 @@ class TweetsController < ApplicationController
 
   # POST /tweets
   def create
-    @tweet = Tweet.create(tweet_params)
+    @tweet = Tweet.new(tweet_params)
+    authorize @tweet
     if @tweet.save
       redirect_to tweets_path, notice: "Tweet was successfully updated."
     else
