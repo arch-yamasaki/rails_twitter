@@ -1,6 +1,7 @@
 <div id="<%= dom_id tweet %>" class="card bg-dark text-light">
   <div class="card-header h-10">
-    <p> <%= tweet.user.name %> </p>
+    <%= image_tag tweet.user.display_profile_image, height: "64px", class: "rounded-circle"%>
+    <span class="fs-4 mx-4"> <%= tweet.user.name %> </span>
   </div>
   <div class="card-body">
     <%= tweet.text %>

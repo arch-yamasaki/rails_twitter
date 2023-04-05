@@ -9,11 +9,7 @@
     <ul class="list-group h5">
       <li class="my-1 list-group-item d-flex bg-dark text-white justify-content-between">
         <span class="py-2"> 画像 : </span>
-        <% if @user.profile_image.attached? %>
-          <%= image_tag @user.profile_image, class: "rounded-circle"%>
-        <% else %>
-          <p>No profile image.</p>
-        <% end %>
+        <%= image_tag @user.display_profile_image, height: "128px", class: "rounded-circle"%>
       </li>
       <li class="my-1 list-group-item d-flex bg-dark text-white justify-content-between">
         <span class="py-2"> ID : </span>

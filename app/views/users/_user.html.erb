@@ -1,13 +1,15 @@
-<div id="<%= dom_id user %>" class="row p-2 z-1" style>
+<div id="<%= dom_id user %>" class="row p-2 z-1">
   <div class="col-3 text-center">
     <%# <%= image_tag "logo.png", alt: 'src' %>
-    画像
+    <%= link_to user_path(user) do %>
+      <%= image_tag user.display_profile_image, height:"64px" , class:"rounded-circle", redirect: user_path(user) %>
+    <% end %>
   </div>
 
   <div class="col-6 position-relative">
-    <%= user.name %>
-    <%= user.birthday %>
-    <%= link_to "", user_path(user), class: 'stretched-link' %>
+    <div class="fs-5"> <%= user.name %> </div>
+    <div class="text-secondary h-50"> id : <%= user.id%> </div>
+    <%= link_to "", user_path(user), class: 'stretched-link', style: "height: 52px" %>
   </div>
   
   <div class="col-3 text-center">
