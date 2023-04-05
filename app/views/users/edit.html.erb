@@ -9,6 +9,12 @@
 
       <ul class="list-group h5">
         <li class="my-1 list-group-item d-flex bg-dark text-white justify-content-between">
+        <%# image css for  %>
+        <span class="py-2"> 画像 : </span>
+        <%# <%= form.label :profile_image, class: "py-2" %>
+        <%= form.file_field :profile_image %>
+      </li>
+        <li class="my-1 list-group-item d-flex bg-dark text-white justify-content-between">
           <span class="my-2"> ID : </span>
           <span> <%= @user.id %> </span>
         </li>
