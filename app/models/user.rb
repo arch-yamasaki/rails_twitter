@@ -29,4 +29,12 @@ class User < ApplicationRecord
     following_ids.include?(user.id)
   end
 
+  def display_profile_image
+    if profile_image.attached?
+      profile_image
+    else
+      "default_user.png"
+    end
+  end
+
 end
