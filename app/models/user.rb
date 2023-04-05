@@ -18,6 +18,9 @@ class User < ApplicationRecord
   has_many :followings, through: :follows, source: :followed # 自分をfollowしてる人たち
   has_many :followers, through: :reverse_of_follows, source: :follower # 自分がfollowした人たち
 
+  # 画像関連
+  has_one_attached :profile_image
+
   def like?(tweet)
     like_tweet_ids().include?(tweet.id)
   end
